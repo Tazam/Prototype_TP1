@@ -18,6 +18,13 @@ import javafx.scene.control.MenuItem;
 import javafx.scene.control.ToolBar;
 import javafx.scene.control.Tooltip;
 import javafx.scene.control.ScrollBar;
+import javafx.scene.control.SplitPane;
+import javafx.scene.control.TextField;
+import javafx.scene.layout.AnchorPane;
+import javafx.scene.image.ImageView;
+import javafx.scene.layout.VBox;
+
+
 
 
 /**
@@ -80,7 +87,47 @@ public class FXMLDocumentController implements Initializable {
     private Tooltip tooltipResize;
     @FXML
     private ScrollBar scrollBar;
-
+    @FXML
+    private SplitPane splitPane;
+    @FXML
+    private ImageView imageViewSearch;
+    @FXML
+    private Tooltip tooltipSearch;
+    @FXML
+    private ImageView imageViewPosition;
+    @FXML
+    private ImageView imageViewResize;
+    @FXML
+    private TextField textFieldImage;
+    @FXML
+    private Tooltip tooltipRename;
+    @FXML
+    private AnchorPane AnchorPanemain;
+    @FXML
+    private AnchorPane AnchorPaneCenter;
+    @FXML
+    private SplitPane SplitPaneCenter;
+    @FXML
+    private AnchorPane AnchorPaneViewer;
+    @FXML
+    private ScrollBar ScrollBarKeyWords;
+    @FXML
+    private VBox VBoxKeyword;
+    @FXML
+    private SplitPane SplitPaneKeyword;
+    @FXML
+    private AnchorPane AnchorPaneKeyword;
+    @FXML
+    private TextField TextFieldKeyword;
+    @FXML
+    private AnchorPane AnchorPaneFieldKeyWord;
+    @FXML
+    private Button buttonDeleteKeyword;
+    @FXML
+    private Tooltip tooltipDeleteKeyWord;
+    @FXML
+    private ImageView ImageViewerDeleteKeyword;
+    
     
     
     @FXML
