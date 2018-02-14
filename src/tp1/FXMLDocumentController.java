@@ -17,8 +17,7 @@ import javafx.scene.control.Menu;
 import javafx.scene.control.MenuItem;
 import javafx.scene.control.ToolBar;
 import javafx.scene.control.Tooltip;
-
-
+import javafx.scene.control.ScrollBar;
 
 
 /**
@@ -31,6 +30,12 @@ public class FXMLDocumentController implements Initializable {
     private Label label;
     @FXML
     private Button button;
+    @FXML
+    private Button buttonsearch;
+    @FXML
+    private Button buttonPosition;
+    @FXML
+    private Button buttonResize;
     @FXML
     private Button buttonRename;
     @FXML
@@ -65,7 +70,17 @@ public class FXMLDocumentController implements Initializable {
     private ToolBar toolBar;
     @FXML
     private Tooltip tooltipLaunchSlideshow;
-    
+    @FXML
+    private Tooltip tooltipChooseDirectory;
+    @FXML
+    private Tooltip tooltipAddKeyword;
+    @FXML
+    private Tooltip tooltipPosition;
+    @FXML
+    private Tooltip tooltipResize;
+    @FXML
+    private ScrollBar scrollBar;
+
     
     
     @FXML
