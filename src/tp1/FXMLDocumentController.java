@@ -38,7 +38,7 @@ public class FXMLDocumentController implements Initializable {
     @FXML
     private Button button;
     @FXML
-    private Button buttonsearch;
+    private Button buttonSearch;
     @FXML
     private Button buttonPosition;
     @FXML
@@ -126,7 +126,7 @@ public class FXMLDocumentController implements Initializable {
     @FXML
     private Tooltip tooltipDeleteKeyWord;
     @FXML
-    private ImageView ImageViewerDeleteKeyword;
+    private ImageView imageViewerDeleteKeyword;
     
     
     
@@ -136,9 +136,230 @@ public class FXMLDocumentController implements Initializable {
         label.setText("Hello World!");
     }
     
+    @FXML
+    private void handleButtonSearch(ActionEvent event) {
+
+    }
+    
+    @FXML
+    private void handleButtonPosition(ActionEvent event) {
+
+    }
+    
+    @FXML
+    private void handleButtonResize(ActionEvent event) {
+
+    }
+    
+    @FXML
+    private void handleButtonRename(ActionEvent event) {
+
+    }
+    
+    @FXML
+    private void handleButtonSlideShow(ActionEvent event) {
+
+    }
+    
+    @FXML
+    private void handleButtonDirectory(ActionEvent event) {
+
+    }
+    
+    @FXML
+    private void handleButtonNewKeyword(ActionEvent event) {
+
+    }
+    
+    @FXML
+    private void handleMenuBar(ActionEvent event) {
+
+    }
+    
+    @FXML
+    private void handleMenuFile(ActionEvent event) {
+
+    }
+    
+    @FXML
+    private void handleMenuItemClose(ActionEvent event) {
+
+    }
+    
+    @FXML
+    private void handleMenuEdit(ActionEvent event) {
+
+    }
+    
+    @FXML
+    private void handleMenuItemDelete(ActionEvent event) {
+
+    }
+    
+    @FXML
+    private void handleMenuHelp(ActionEvent event) {
+
+    }
+    
+    @FXML
+    private void handleMenuItemAbout(ActionEvent event) {
+
+    }
+    
+    @FXML
+    private void handleMenuLanguage(ActionEvent event) {
+
+    }
+    
+    @FXML
+    private void handleMenuItemEnglish(ActionEvent event) {
+
+    }
+    
+    @FXML
+    private void handleMenuItemFrench(ActionEvent event) {
+
+    }
+    
+    @FXML
+    private void handleMenuItemRussian(ActionEvent event) {
+
+    }
+    
+    @FXML
+    private void handleToolBar(ActionEvent event) {
+
+    }
+    
+    @FXML
+    private void handleTooltipLaunchSlideShow(ActionEvent event) {
+
+    }
+    
+    @FXML
+    private void handleTooltipChooseDirectory(ActionEvent event) {
+
+    }
+    
+    @FXML
+    private void handleTooltipPosition(ActionEvent event) {
+
+    }
+    
+    @FXML
+    private void handleTooltipAddKeyword(ActionEvent event) {
+
+    }
+    
+    @FXML
+    private void handleTootipResize(ActionEvent event) {
+
+    }
+    
+    @FXML
+    private void handleScrollBar(ActionEvent event) {
+
+    }
+    
+    @FXML
+    private void handleSplitPane(ActionEvent event) {
+
+    }
+    
+    @FXML
+    private void handleImageViewSearch(ActionEvent event) {
+
+    }
+    
+    @FXML
+    private void handleTooltipSearch(ActionEvent event) {
+
+    }
+    
+    @FXML
+    private void handleImageViewPosition(ActionEvent event) {
+
+    }
+    @FXML
+    private void handleImageViewResize(ActionEvent event) {
+
+    }
+    
+    @FXML
+    private void handletextFieldImage(ActionEvent event) {
+
+    }
+    
+    @FXML
+    private void handleTooltipRename(ActionEvent event) {
+
+    }
+    
+    @FXML
+    private void handleAnchorPaneMain(ActionEvent event) {
+
+    }
+    
+    @FXML
+    private void handleAnchorPaneCenter(ActionEvent event) {
+
+    }
+    
+    @FXML
+    private void handleAnchorPaneViewer(ActionEvent event) {
+
+    }
+    
+    @FXML
+    private void handleScrollBarKeywords(ActionEvent event) {
+
+    }
+    
+    @FXML
+    private void handleVBoxKeyword(ActionEvent event) {
+
+    }
+    
+    @FXML
+    private void handleSplitPaneKeyword(ActionEvent event) {
+
+    }
+    
+    @FXML
+    private void handleAnchorPaneKeyword(ActionEvent event) {
+
+    }
+    
+    @FXML
+    private void handleTextFieldKeyword(ActionEvent event) {
+
+    }
+    
+    @FXML
+    private void handleAnchorPaneFieldKeyWord(ActionEvent event) {
+
+    }
+    
+    @FXML
+    private void handleButtonDeleteKeyword(ActionEvent event) {
+
+    }
+    
+    @FXML
+    private void handleTooltipDeleteKeyWord(ActionEvent event) {
+
+    }
+    
+    @FXML
+    private void handleImageViewerDeleteKeyword(ActionEvent event) {
+
+    }
+    
+    
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
     }    
     
 }
+
