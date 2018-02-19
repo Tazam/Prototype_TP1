@@ -249,6 +249,28 @@ public class FXMLDocumentController implements Initializable {
         locale = new Locale(language); 
         bundle = ResourceBundle.getBundle("tp1.lang", locale);
         buttonSlideshow.setText(bundle.getString("buttonSlideshow"));
+        buttonDirectory.setText(bundle.getString("buttonDirectory"));
+        buttonRename.setText(bundle.getString("buttonRename"));
+        menuFile.setText(bundle.getString("menuFile"));
+        menuItemClose.setText(bundle.getString("menuItemClose"));
+        menuEdit.setText(bundle.getString("menuEdit"));
+        menuItemDelete.setText(bundle.getString("menuItemDelete"));
+        menuHelp.setText(bundle.getString("menuHelp"));
+        menuItemAbout.setText(bundle.getString("menuItemAbout"));
+        menuLanguage.setText(bundle.getString("menuLanguage"));
+        buttonNewKeyword.setText(bundle.getString("buttonNewKeyword"));
+        TextFieldKeyword.setText(bundle.getString("TextFieldKeyword"));  
+        tooltipAddKeyword.setText(bundle.getString("tooltipAddKeyword"));
+        tooltipDeleteKeyWord.setText(bundle.getString("tooltipDeleteKeyWord"));
+        tooltipResize.setText(bundle.getString("tooltipResize"));
+        tooltipRename.setText(bundle.getString("tooltipRename"));
+        tooltipPosition.setText(bundle.getString("tooltipPosition"));
+        tooltipSearch.setText(bundle.getString("tooltipSearch"));
+
+        
+        
+        
+        
     }
     
     @FXML

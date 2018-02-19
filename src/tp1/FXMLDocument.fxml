@@ -19,26 +19,26 @@
    <children>
       <MenuBar layoutX="4.0" layoutY="14.0" prefHeight="25.0" prefWidth="1034.0">
         <menus>
-          <Menu mnemonicParsing="false" text="File">
+          <Menu fx:id="menuFile" mnemonicParsing="false" text="File">
             <items>
-              <MenuItem mnemonicParsing="false" text="Close" />
+              <MenuItem fx:id="menuItemClose" mnemonicParsing="false" text="Close" />
             </items>
           </Menu>
-          <Menu mnemonicParsing="false" text="Edit">
+          <Menu fx:id="menuEdit" mnemonicParsing="false" text="Edit">
             <items>
-              <MenuItem mnemonicParsing="false" text="Delete" />
+              <MenuItem fx:id="menuItemDelete" mnemonicParsing="false" text="Delete" />
             </items>
           </Menu>
-          <Menu mnemonicParsing="false" text="Help">
+          <Menu fx:id="menuHelp" mnemonicParsing="false" text="Help">
             <items>
-              <MenuItem mnemonicParsing="false" text="About" />
+              <MenuItem fx:id="menuItemAbout" mnemonicParsing="false" text="About" />
             </items>
           </Menu>
-            <Menu mnemonicParsing="false" text="Language">
+            <Menu fx:id="menuLanguage" mnemonicParsing="false" text="Language">
               <items>
-                <MenuItem mnemonicParsing="false" onAction="#handleMenuItemEnglish" text="English" />
-                  <MenuItem mnemonicParsing="false" onAction="#handleMenuItemFrench" text="Français" />
-                  <MenuItem mnemonicParsing="false" onAction="#handleMenuItemRussian" text="Русский" />
+                <MenuItem fx:id="menuItemEnglish" mnemonicParsing="false" onAction="#handleMenuItemEnglish" text="English" />
+                  <MenuItem fx:id="menuItemFrench" mnemonicParsing="false" onAction="#handleMenuItemFrench" text="Français" />
+                  <MenuItem fx:id="menuItemRussian" mnemonicParsing="false" onAction="#handleMenuItemRussian" text="Русский" />
               </items>
             </Menu>
         </menus>
@@ -50,8 +50,8 @@
             <Text fx:id="textDirectory" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="863.13671875" />
          </items>
       </ToolBar>
-      <TextField layoutX="14.0" layoutY="86.0" prefHeight="25.0" prefWidth="164.0" promptText="Rechercher" />
-      <Button layoutX="178.0" layoutY="87.0" mnemonicParsing="false">
+      <TextField layoutX="14.0" layoutY="86.0" prefHeight="25.0" prefWidth="164.0" promptText="..." />
+      <Button fx:id="buttonSearch" layoutX="178.0" layoutY="87.0" mnemonicParsing="false">
          <graphic>
             <ImageView fitHeight="13.0" fitWidth="17.0" pickOnBounds="true" preserveRatio="true">
                <image>
@@ -60,7 +60,7 @@
             </ImageView>
          </graphic>
          <tooltip>
-            <Tooltip text="Image search" />
+            <Tooltip fx:id="tooltipSearch" />
          </tooltip>
       </Button>
       <SplitPane dividerPositions="0.7786499215070644" layoutX="12.0" layoutY="122.0" orientation="VERTICAL" prefHeight="630.0" prefWidth="1014.0">
@@ -74,22 +74,22 @@
                               <ScrollBar layoutX="7.0" layoutY="5.0" orientation="VERTICAL" prefHeight="482.0" prefWidth="14.0" />
                               <VBox layoutX="26.0" layoutY="14.0" prefHeight="475.0" prefWidth="127.0">
                                  <children>
-                                    <Button mnemonicParsing="false" prefHeight="25.0" prefWidth="118.0" text="New keyword">
+                                    <Button fx:id="buttonNewKeyword" mnemonicParsing="false" prefHeight="25.0" prefWidth="118.0" text="New keyword">
                                        <tooltip>
-                                          <Tooltip text="Add keyword" />
+                                          <Tooltip fx:id="tooltipAddKeyword" text="Add keyword" />
                                        </tooltip></Button>
                                     <SplitPane dividerPositions="0.752" prefHeight="31.0" prefWidth="127.0">
                                       <items>
                                         <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="0.0" prefWidth="50.0">
                                              <children>
-                                                <TextField prefHeight="32.0" prefWidth="91.0" text="KeyWord 1" />
+                                                <TextField fx:id="TextFieldKeyword" prefHeight="32.0" prefWidth="91.0" text="KeyWord 1" />
                                              </children>
                                           </AnchorPane>
                                         <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="22.0" prefWidth="20.0">
                                              <children>
                                                 <Button ellipsisString="" layoutY="2.0" mnemonicParsing="false" prefHeight="24.0" prefWidth="28.0">
                                                    <tooltip>
-                                                      <Tooltip text="Delete keyword" />
+                                                      <Tooltip fx:id="tooltipDeleteKeyWord" text="Delete keyword" />
                                                    </tooltip>
                                                 </Button>
                                                 <ImageView accessibleRole="BUTTON" fitHeight="16.0" fitWidth="29.0" layoutX="4.0" layoutY="6.0" mouseTransparent="true" pickOnBounds="true" preserveRatio="true">
@@ -107,11 +107,7 @@
                         </AnchorPane>
                       <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="478.0" prefWidth="853.0">
                            <children>
-                              <ImageView fitHeight="409.0" fitWidth="686.0" layoutX="98.0" layoutY="22.0" pickOnBounds="true" preserveRatio="true">
-                                 <image>
-                                    <Image url="file:/D:/Images/drôle/watermark.php.jpeg" />
-                                 </image>
-                              </ImageView>
+                              <ImageView fitHeight="409.0" fitWidth="686.0" layoutX="98.0" layoutY="22.0" pickOnBounds="true" preserveRatio="true" />
                            </children>
                         </AnchorPane>
                     </items>
@@ -121,41 +117,17 @@
           <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">
                <children>
                   <ScrollBar layoutX="9.0" layoutY="117.0" prefHeight="14.0" prefWidth="995.0" />
-                  <ImageView fitHeight="95.0" fitWidth="100.0" layoutX="14.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="file:/D:/Images/12489.png" />
-                     </image>
-                  </ImageView>
-                  <ImageView fitHeight="95.0" fitWidth="133.0" layoutX="152.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="file:/D:/Images/league%20of%20legend/wallpaper-836893.jpg" />
-                     </image>
-                  </ImageView>
-                  <ImageView fitHeight="95.0" fitWidth="133.0" layoutX="289.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="file:/D:/Images/2.jpg" />
-                     </image>
-                  </ImageView>
-                  <ImageView fitHeight="95.0" fitWidth="133.0" layoutX="430.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../../../../../Images/imageVide.png" />
-                     </image>
-                  </ImageView>
-                  <ImageView fitHeight="95.0" fitWidth="133.0" layoutX="571.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../../../../../Images/imageVide.png" />
-                     </image>
-                  </ImageView>
-                  <ImageView fitHeight="95.0" fitWidth="133.0" layoutX="709.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../../../../../Images/imageVide.png" />
-                     </image>
-                  </ImageView>
+                  <ImageView fitHeight="95.0" fitWidth="100.0" layoutX="14.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true" />
+                  <ImageView fitHeight="95.0" fitWidth="133.0" layoutX="152.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true" />
+                  <ImageView fitHeight="95.0" fitWidth="133.0" layoutX="289.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true" />
+                  <ImageView fitHeight="95.0" fitWidth="133.0" layoutX="430.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true" />
+                  <ImageView fitHeight="95.0" fitWidth="133.0" layoutX="571.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true" />
+                  <ImageView fitHeight="95.0" fitWidth="133.0" layoutX="709.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true" />
                </children>
             </AnchorPane>
         </items>
       </SplitPane>
-      <Button layoutX="211.0" layoutY="85.0" mnemonicParsing="false" prefHeight="24.0" prefWidth="37.0">
+      <Button fx:id="buttonPosition" layoutX="211.0" layoutY="85.0" mnemonicParsing="false" prefHeight="24.0" prefWidth="37.0">
          <graphic>
             <ImageView fitHeight="19.0" fitWidth="28.0" pickOnBounds="true" preserveRatio="true">
                <image>
@@ -164,10 +136,10 @@
             </ImageView>
          </graphic>
          <tooltip>
-            <Tooltip text="Portrait / Landscape" />
+            <Tooltip fx:id="tooltipPosition" />
          </tooltip>
       </Button>
-      <Button layoutX="251.0" layoutY="85.0" mnemonicParsing="false" prefHeight="24.0" prefWidth="37.0">
+      <Button fx:id="buttonResize" layoutX="251.0" layoutY="85.0" mnemonicParsing="false" prefHeight="24.0" prefWidth="37.0">
          <graphic>
             <ImageView fitHeight="19.0" fitWidth="28.0" pickOnBounds="true" preserveRatio="true">
                <image>
@@ -176,13 +148,13 @@
             </ImageView>
          </graphic>
          <tooltip>
-            <Tooltip text="Resize" />
+            <Tooltip fx:id="tooltipResize" />
          </tooltip>
       </Button>
       <TextField layoutX="297.0" layoutY="87.0" text="Image_1.JPEG" />
       <Button fx:id="buttonRename" layoutX="455.0" layoutY="87.0" mnemonicParsing="false" text="Rename">
          <tooltip>
-            <Tooltip text="Rename current image" />
+            <Tooltip fx:id="tooltipRename" />
          </tooltip></Button>
    </children>
 </AnchorPane>
