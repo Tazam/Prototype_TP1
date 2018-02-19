@@ -15,7 +15,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane id="AnchorPane" prefHeight="777.0" prefWidth="1034.0" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tp1.FXMLDocumentController">
+<AnchorPane id="AnchorPane" prefHeight="777.0" prefWidth="1034.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tp1.FXMLDocumentController">
    <children>
       <MenuBar layoutX="4.0" layoutY="14.0" prefHeight="25.0" prefWidth="1034.0">
         <menus>
@@ -36,16 +36,16 @@
           </Menu>
             <Menu mnemonicParsing="false" text="Language">
               <items>
-                <MenuItem mnemonicParsing="false" text="English" />
-                  <MenuItem mnemonicParsing="false" text="Français" />
-                  <MenuItem mnemonicParsing="false" text="Русский" />
+                <MenuItem mnemonicParsing="false" onAction="#handleMenuItemEnglish" text="English" />
+                  <MenuItem mnemonicParsing="false" onAction="#handleMenuItemFrench" text="Français" />
+                  <MenuItem mnemonicParsing="false" onAction="#handleMenuItemRussian" text="Русский" />
               </items>
             </Menu>
         </menus>
       </MenuBar>
       <ToolBar fx:id="toolBar" layoutX="4.0" layoutY="39.0" prefHeight="40.0" prefWidth="1034.0">
          <items>
-            <Button mnemonicParsing="false" text="Slideshow" />
+            <Button fx:id="buttonSlideshow" mnemonicParsing="false" text="Slideshow" />
             <Button fx:id="buttonDirectory" mnemonicParsing="false" onAction="#handleButtonDirectory" text="Directory ..." />
             <Text fx:id="textDirectory" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="863.13671875" />
          </items>

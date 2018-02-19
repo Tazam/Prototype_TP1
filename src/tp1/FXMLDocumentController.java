@@ -26,6 +26,7 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.VBox;
 import javafx.stage.DirectoryChooser;
 import javafx.scene.text.Text;
+import java.util.Locale;
 
 
 
@@ -38,6 +39,9 @@ public class FXMLDocumentController implements Initializable {
     
     @FXML
     private Label label;
+    private ResourceBundle bundle;
+    private Locale locale;
+    
     @FXML
     private Button button;
     @FXML
@@ -228,17 +232,23 @@ public class FXMLDocumentController implements Initializable {
     
     @FXML
     private void handleMenuItemEnglish(ActionEvent event) {
-
+        changeLanguage("en");
     }
     
     @FXML
     private void handleMenuItemFrench(ActionEvent event) {
-
+        changeLanguage("fr");
     }
     
     @FXML
     private void handleMenuItemRussian(ActionEvent event) {
-
+        changeLanguage("ru");
+    }
+    
+    private void changeLanguage(String language){
+        locale = new Locale(language); 
+        bundle = ResourceBundle.getBundle("tp1.lang", locale);
+        buttonSlideshow.setText(bundle.getString("buttonSlideshow"));
     }
     
     @FXML
