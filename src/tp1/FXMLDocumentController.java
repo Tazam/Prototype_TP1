@@ -7,6 +7,7 @@ package tp1;
 
 import java.net.URL;
 import java.util.ResourceBundle;
+import java.io.File;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -23,6 +24,8 @@ import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.VBox;
+import javafx.stage.DirectoryChooser;
+import javafx.scene.text.Text;
 
 
 
@@ -127,8 +130,14 @@ public class FXMLDocumentController implements Initializable {
     private Tooltip tooltipDeleteKeyWord;
     @FXML
     private ImageView imageViewerDeleteKeyword;
+    @FXML
+    private Text textDirectory;
     
+    private DirectoryChooser directoryChooser = new DirectoryChooser();
     
+    /**************************************************************************/
+    /***********************HANDLERS*******************************************/
+    /**************************************************************************/
     
     @FXML
     private void handleButtonAction(ActionEvent event) {
@@ -163,6 +172,12 @@ public class FXMLDocumentController implements Initializable {
     
     @FXML
     private void handleButtonDirectory(ActionEvent event) {
+        File dir = directoryChooser.showDialog(tooltipRename);
+            if (dir != null) {
+                textDirectory.setText(dir.getAbsolutePath());
+            } else {
+                textDirectory.setText(null);
+            }
 
     }
     
@@ -359,7 +374,14 @@ public class FXMLDocumentController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
-    }    
+    }
+
+/******************************************************************************/
+/***************************FONCTIONS UTILITAIRES******************************/
+/******************************************************************************/
+    
+    
+    
     
 }
 

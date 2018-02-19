@@ -43,18 +43,12 @@
             </Menu>
         </menus>
       </MenuBar>
-      <ToolBar layoutX="4.0" layoutY="39.0" prefHeight="40.0" prefWidth="1034.0">
-        <items>
-            <Button fx:id="buttonSlideshow" mnemonicParsing="false" text="Slideshow">
-               <tooltip>
-                  <Tooltip text="Lunch Slideshow" />
-               </tooltip></Button>
-          <Button mnemonicParsing="false" text="Directory ...">
-               <tooltip>
-                  <Tooltip text="Choose directory" />
-               </tooltip></Button>
-            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="C:\Images" wrappingWidth="850.13671875" />
-        </items>
+      <ToolBar fx:id="toolBar" layoutX="4.0" layoutY="39.0" prefHeight="40.0" prefWidth="1034.0">
+         <items>
+            <Button mnemonicParsing="false" text="Slideshow" />
+            <Button fx:id="buttonDirectory" mnemonicParsing="false" onAction="#handleButtonDirectory" text="Directory ..." />
+            <Text fx:id="textDirectory" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="863.13671875" />
+         </items>
       </ToolBar>
       <TextField layoutX="14.0" layoutY="86.0" prefHeight="25.0" prefWidth="164.0" promptText="Rechercher" />
       <Button layoutX="178.0" layoutY="87.0" mnemonicParsing="false">
