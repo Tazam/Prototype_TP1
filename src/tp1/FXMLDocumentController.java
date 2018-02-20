@@ -412,7 +412,10 @@ public class FXMLDocumentController implements Initializable {
 /***************************FONCTIONS UTILITAIRES******************************/
 /******************************************************************************/
     
-    
+    public void initializePicture(String path)
+    {
+        
+    }
     
     
 }

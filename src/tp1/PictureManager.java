@@ -13,21 +13,34 @@ import java.util.ArrayList;
  * @author Tazam
  */
 public class PictureManager {
-    private Map <String,List<Picture>> collection;
+    protected Map <Picture,List<String>> collection;
+    public List<Picture> currentPictures;
     
     public PictureManager()
     {
         
     }
     
-    public void addElement(String keyword,Picture picture)
+    public void addPicture (Picture picture)
     {
-        if (!collection.containsKey(keyword))
-        {
-            collection.put(keyword, new ArrayList<>());  
-        }
-        collection.get(keyword).add(picture);
+        if (!collection.containsKey(picture))
+            collection.put(picture, new ArrayList<>());
     }
+    
+    public void addKeyword (Picture picture,String key)
+    {
+        if (!collection.get(picture).contains(key))
+        {
+            collection.get(picture).add(key);
+        }
+    }
+    
+    public void save()
+    {
+        
+    }
+    
+    
     
     
 }
