@@ -63,7 +63,7 @@ public class PictureManager {
                     Logger.getLogger(PictureManager.class.getName()).log(Level.SEVERE, null, ex);
                 }
             });
-        
+            bw.close();
         }
         catch (IOException e) {
             e.printStackTrace();
