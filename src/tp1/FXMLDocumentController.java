@@ -8,6 +8,8 @@ package tp1;
 import java.net.URL;
 import java.util.ResourceBundle;
 import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -27,6 +29,12 @@ import javafx.scene.layout.VBox;
 import javafx.stage.DirectoryChooser;
 import javafx.scene.text.Text;
 import java.util.Locale;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+import javafx.geometry.Insets;
+import javafx.scene.control.ScrollPane;
+import javafx.scene.image.Image;
+import javafx.scene.layout.GridPane;
 
 
 
@@ -136,8 +144,12 @@ public class FXMLDocumentController implements Initializable {
     private ImageView imageViewerDeleteKeyword;
     @FXML
     private Text textDirectory;
+    @FXML
+    private ScrollPane scrollPane;
+    @FXML
+    private GridPane gridPane;
     
-    private DirectoryChooser directoryChooser = new DirectoryChooser();
+    private final DirectoryChooser directoryChooser = new DirectoryChooser();
     
     /**************************************************************************/
     /***********************HANDLERS*******************************************/
@@ -175,14 +187,14 @@ public class FXMLDocumentController implements Initializable {
     }
     
     @FXML
-    private void handleButtonDirectory(ActionEvent event) {
+    private void handleButtonDirectory(ActionEvent event) throws FileNotFoundException {
         File dir = directoryChooser.showDialog(tooltipRename);
             if (dir != null) {
                 textDirectory.setText(dir.getAbsolutePath());
             } else {
                 textDirectory.setText(null);
             }
-
+        initializePicture(textDirectory.getText());
     }
     
     @FXML
@@ -405,18 +417,50 @@ public class FXMLDocumentController implements Initializable {
     
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        // TODO
+        
     }
 
 /******************************************************************************/
 /***************************FONCTIONS UTILITAIRES******************************/
-/******************************************************************************/
+/**
+     * @param path*
+     * @throws java.io.FileNotFoundException***************************************************************************/
     
-    public void initializePicture(String path)
+    public void initializePicture(String path) throws FileNotFoundException
     {
+        gridPane.getChildren().clear();
+        String IMAGE_PATTERN =  "([^\\s]+(\\.(?i)(jpg|png|gif|bmp))$)";
+        Pattern pattern = Pattern.compile(IMAGE_PATTERN);
+        Matcher matcher;
+        File rep = new File(path);
+        int i=0;
+        for (String fichier : rep.list())
+        {
+            matcher = pattern.matcher(fichier);
+            if (matcher.matches())
+            {
+                //System.out.println(path+fichier);
+                //createImageView(path+fichier);
+                gridPane.addRow(i, createImageView(path+"\\"+fichier));
+                //scrollPane.setChild(createImageView(path+fichier));
+               
+            }
+        }
+    }
+
+    public ImageView createImageView(String path) throws FileNotFoundException
+    {
+        ImageView imv = new ImageView();
+        Image image;
+        image = new Image(new FileInputStream(path));
+        imv.setImage(image);
+        imv.setFitHeight(100);
+        //imv.setCache(true);
+        imv.setSmooth(true);
+        imv.setPreserveRatio(true);
+        
+        return imv;
         
     }
-    
-    
 }
 
