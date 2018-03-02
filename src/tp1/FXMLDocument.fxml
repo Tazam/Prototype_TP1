@@ -109,12 +109,15 @@
                               </VBox>
                            </children>
                         </AnchorPane>
-                      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="478.0" prefWidth="853.0" />
+                      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="478.0" prefWidth="853.0">
+                           <children>
+                              <ImageView fx:id="mainImageView" fitHeight="464.0" fitWidth="806.0" layoutX="23.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true" />
+                           </children></AnchorPane>
                     </items>
                   </SplitPane>
                   <ScrollPane fx:id="scrollPane" layoutX="6.0" layoutY="500.0" prefHeight="137.0" prefWidth="1000.0">
                      <content>
-                        <GridPane fx:id="gridPane" prefHeight="130.0" prefWidth="130.0">
+                        <GridPane fx:id="gridPane" prefHeight="131.0" prefWidth="130.0">
                           <rowConstraints>
                             <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                           </rowConstraints>

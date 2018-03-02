@@ -29,11 +29,15 @@ import javafx.scene.layout.VBox;
 import javafx.stage.DirectoryChooser;
 import javafx.scene.text.Text;
 import java.util.Locale;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+import javafx.event.EventHandler;
 import javafx.geometry.Insets;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.image.Image;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.GridPane;
 
 
@@ -148,6 +152,8 @@ public class FXMLDocumentController implements Initializable {
     private ScrollPane scrollPane;
     @FXML
     private GridPane gridPane;
+    @FXML
+    private ImageView mainImageView;
     
     private final DirectoryChooser directoryChooser = new DirectoryChooser();
     
@@ -458,9 +464,22 @@ public class FXMLDocumentController implements Initializable {
         //imv.setCache(true);
         imv.setSmooth(true);
         imv.setPreserveRatio(true);
+        imv.setOnMouseClicked((MouseEvent e) -> {
+            try {
+                mainImage(path);
+            } catch (FileNotFoundException ex) {
+                Logger.getLogger(FXMLDocumentController.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        });
         
         return imv;
         
+    }
+    
+    public void mainImage(String path) throws FileNotFoundException
+    {
+        Image image = new Image(new FileInputStream(path));
+        mainImageView.setImage(image);
     }
 }
 
