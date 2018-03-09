@@ -54,18 +54,18 @@
             <Text fx:id="textDirectory" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="863.13671875" />
          </items>
       </ToolBar>
-      <TextField layoutX="14.0" layoutY="86.0" prefHeight="25.0" prefWidth="164.0" promptText="..." />
-      <Button fx:id="buttonSearch" layoutX="178.0" layoutY="87.0" mnemonicParsing="false">
+      <TextField fx:id="textFieldSearch" layoutX="14.0" layoutY="86.0" prefHeight="25.0" prefWidth="164.0" promptText="..." />
+      <Button fx:id="buttonSearch" layoutX="186.0" layoutY="83.0" maxWidth="35.0" mnemonicParsing="false" onAction="#handleButtonSearch" prefHeight="29.0" prefWidth="35.0">
+         <tooltip>
+            <Tooltip fx:id="tooltipSearch" />
+         </tooltip>
          <graphic>
-            <ImageView fitHeight="13.0" fitWidth="17.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="22.0" fitWidth="19.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@images/loupe.png" />
                </image>
             </ImageView>
          </graphic>
-         <tooltip>
-            <Tooltip fx:id="tooltipSearch" />
-         </tooltip>
       </Button>
       <SplitPane layoutX="12.0" layoutY="122.0" orientation="VERTICAL" prefHeight="646.0" prefWidth="1014.0">
         <items>
@@ -75,38 +75,30 @@
                     <items>
                       <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="494.0" prefWidth="142.0">
                            <children>
-                              <ScrollBar layoutX="7.0" layoutY="5.0" orientation="VERTICAL" prefHeight="482.0" prefWidth="14.0" />
-                              <VBox layoutX="26.0" layoutY="14.0" prefHeight="475.0" prefWidth="127.0">
-                                 <children>
-                                    <Button fx:id="buttonNewKeyword" mnemonicParsing="false" prefHeight="25.0" prefWidth="118.0" text="New keyword">
-                                       <tooltip>
-                                          <Tooltip fx:id="tooltipAddKeyword" text="Add keyword" />
-                                       </tooltip></Button>
-                                    <SplitPane dividerPositions="0.752" prefHeight="31.0" prefWidth="127.0">
-                                      <items>
-                                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="0.0" prefWidth="50.0">
+                              <ScrollBar layoutX="3.0" layoutY="5.0" orientation="VERTICAL" prefHeight="482.0" prefWidth="14.0" />
+                              <SplitPane dividerPositions="0.1125" layoutX="21.0" layoutY="3.0" orientation="VERTICAL" prefHeight="482.0" prefWidth="127.0">
+                                <items>
+                                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">
+                                       <children>
+                                          <VBox prefHeight="221.0" prefWidth="125.0">
                                              <children>
-                                                <TextField fx:id="TextFieldKeyword" prefHeight="32.0" prefWidth="91.0" text="KeyWord 1" />
-                                             </children>
-                                          </AnchorPane>
-                                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="22.0" prefWidth="20.0">
-                                             <children>
-                                                <Button ellipsisString="" layoutY="2.0" mnemonicParsing="false" prefHeight="24.0" prefWidth="28.0">
+                                                <TextField fx:id="TextFieldKeyword" />
+                                                <Button fx:id="buttonNewKeyword" mnemonicParsing="false" onAction="#handleButtonNewKeyword" prefHeight="25.0" prefWidth="124.0" text="New keyword">
                                                    <tooltip>
-                                                      <Tooltip fx:id="tooltipDeleteKeyWord" text="Delete keyword" />
+                                                      <Tooltip fx:id="tooltipAddKeyword" text="Add keyword" />
                                                    </tooltip>
                                                 </Button>
-                                                <ImageView accessibleRole="BUTTON" fitHeight="16.0" fitWidth="29.0" layoutX="4.0" layoutY="6.0" mouseTransparent="true" pickOnBounds="true" preserveRatio="true">
-                                                   <image>
-                                                      <Image url="@images/croiXRouge.png" />
-                                                   </image>
-                                                </ImageView>
                                              </children>
-                                          </AnchorPane>
-                                      </items>
-                                    </SplitPane>
-                                 </children>
-                              </VBox>
+                                          </VBox>
+                                       </children>
+                                    </AnchorPane>
+                                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">
+                                       <children>
+                                          <VBox fx:id="VBoxKeyword" prefHeight="423.0" prefWidth="125.0" />
+                                       </children>
+                                    </AnchorPane>
+                                </items>
+                              </SplitPane>
                            </children>
                         </AnchorPane>
                       <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="478.0" prefWidth="853.0">
@@ -130,7 +122,7 @@
             </AnchorPane>
         </items>
       </SplitPane>
-      <Button fx:id="buttonPosition" layoutX="211.0" layoutY="85.0" mnemonicParsing="false" prefHeight="24.0" prefWidth="37.0">
+      <Button fx:id="buttonPosition" layoutX="223.0" layoutY="82.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="35.0">
          <graphic>
             <ImageView fitHeight="19.0" fitWidth="28.0" pickOnBounds="true" preserveRatio="true">
                <image>
@@ -142,7 +134,7 @@
             <Tooltip fx:id="tooltipPosition" />
          </tooltip>
       </Button>
-      <Button fx:id="buttonResize" layoutX="251.0" layoutY="85.0" mnemonicParsing="false" prefHeight="24.0" prefWidth="37.0">
+      <Button fx:id="buttonResize" layoutX="261.0" layoutY="81.0" mnemonicParsing="false" prefHeight="29.0" prefWidth="35.0">
          <graphic>
             <ImageView fitHeight="19.0" fitWidth="28.0" pickOnBounds="true" preserveRatio="true">
                <image>
@@ -154,15 +146,10 @@
             <Tooltip fx:id="tooltipResize" />
          </tooltip>
       </Button>
-      <TextField layoutX="297.0" layoutY="87.0" text="Image_1.JPEG" />
-      <Button fx:id="buttonRename" layoutX="455.0" layoutY="87.0" mnemonicParsing="false" text="Rename">
+      <TextField fx:id="textFieldImage" layoutX="299.0" layoutY="87.0" />
+      <Button fx:id="buttonRename" layoutX="457.0" layoutY="87.0" mnemonicParsing="false" text="Rename">
          <tooltip>
             <Tooltip fx:id="tooltipRename" />
          </tooltip></Button>
-      <ImageView fitHeight="22.0" fitWidth="24.0" layoutX="181.0" layoutY="88.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@images/loupe.png" />
-         </image>
-      </ImageView>
    </children>
 </AnchorPane>

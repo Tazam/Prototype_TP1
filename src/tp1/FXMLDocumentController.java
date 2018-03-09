@@ -10,6 +10,7 @@ import java.util.ResourceBundle;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
+import java.util.ArrayList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -33,8 +34,6 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
-import javafx.event.EventHandler;
-import javafx.geometry.Insets;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.image.Image;
 import javafx.scene.input.MouseEvent;
@@ -55,9 +54,8 @@ public class FXMLDocumentController implements Initializable {
     private Locale locale;
     
     @FXML
-    private Button button;
-    @FXML
-    private Button buttonSearch;
+    private Button button, buttonSearch;
+
     @FXML
     private Button buttonPosition;
     @FXML
@@ -117,7 +115,7 @@ public class FXMLDocumentController implements Initializable {
     @FXML
     private ImageView imageViewResize;
     @FXML
-    private TextField textFieldImage;
+    private TextField textFieldImage, textFieldSearch;
     @FXML
     private Tooltip tooltipRename;
     @FXML
@@ -156,6 +154,8 @@ public class FXMLDocumentController implements Initializable {
     private ImageView mainImageView;
     
     private final DirectoryChooser directoryChooser = new DirectoryChooser();
+    private PictureCollection pictureCollection;
+    private String mainPicturePath;
     
     /**************************************************************************/
     /***********************HANDLERS*******************************************/
@@ -168,8 +168,21 @@ public class FXMLDocumentController implements Initializable {
     }
     
     @FXML
-    private void handleButtonSearch(ActionEvent event) {
+    private void handleButtonSearch(ActionEvent event) throws FileNotFoundException {
 
+        System.out.println("grrrrrrrrr");
+        if (!textFieldSearch.getText().isEmpty())
+        {
+            System.out.println(pictureCollection.toString());
+            ArrayList<String> pictures = pictureCollection.picturesByKeyWords(textFieldSearch.getText().split(","),textDirectory.getText());
+            System.out.println(pictures.toString());
+            initializePicture(pictures);
+        }else
+        {
+            System.out.println("reerue");
+        }
+        
+        
     }
     
     @FXML
@@ -194,6 +207,7 @@ public class FXMLDocumentController implements Initializable {
     
     @FXML
     private void handleButtonDirectory(ActionEvent event) throws FileNotFoundException {
+        
         File dir = directoryChooser.showDialog(tooltipRename);
             if (dir != null) {
                 textDirectory.setText(dir.getAbsolutePath());
@@ -204,8 +218,12 @@ public class FXMLDocumentController implements Initializable {
     }
     
     @FXML
-    private void handleButtonNewKeyword(ActionEvent event) {
-
+    private void handleButtonNewKeyword(ActionEvent event) throws FileNotFoundException {
+        if ((!mainPicturePath.isEmpty())&&(!TextFieldKeyword.getText().isEmpty()))
+        {
+            newKeyWord(TextFieldKeyword.getText());
+        }
+        
     }
     
     @FXML
@@ -423,7 +441,8 @@ public class FXMLDocumentController implements Initializable {
     
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        
+        pictureCollection = new PictureCollection();
+        mainPicturePath = "";
     }
 
 /******************************************************************************/
@@ -435,6 +454,10 @@ public class FXMLDocumentController implements Initializable {
     public void initializePicture(String path) throws FileNotFoundException
     {
         gridPane.getChildren().clear();
+        mainImageView.imageProperty().set(null);
+        mainPicturePath = "";
+        textFieldImage.setText("");
+        VBoxKeyword.getChildren().clear();
         String IMAGE_PATTERN =  "([^\\s]+(\\.(?i)(jpg|png|gif|bmp))$)";
         Pattern pattern = Pattern.compile(IMAGE_PATTERN);
         Matcher matcher;
@@ -445,14 +468,28 @@ public class FXMLDocumentController implements Initializable {
             matcher = pattern.matcher(fichier);
             if (matcher.matches())
             {
-                //System.out.println(path+fichier);
-                //createImageView(path+fichier);
-                gridPane.addRow(i, createImageView(path+"\\"+fichier));
-                //scrollPane.setChild(createImageView(path+fichier));
-               
+                gridPane.addRow(i, createImageView(path+"\\"+fichier));          
             }
         }
     }
+    
+    public void initializePicture(ArrayList<String> pictures) throws FileNotFoundException
+    {
+        gridPane.getChildren().clear();
+        mainImageView.imageProperty().set(null);
+        textFieldImage.setText("");
+        mainPicturePath = "";
+        VBoxKeyword.getChildren().clear();
+        int i=0;
+        
+        for (String picture : pictures)
+        {
+            gridPane.addRow(i, createImageView(picture));
+            i++;
+        }
+    }
+    
+    
 
     public ImageView createImageView(String path) throws FileNotFoundException
     {
@@ -480,6 +517,96 @@ public class FXMLDocumentController implements Initializable {
     {
         Image image = new Image(new FileInputStream(path));
         mainImageView.setImage(image);
+        mainPicturePath = path;
+        String pictureName[] = path.split("\\\\");
+        textFieldImage.setText(pictureName[pictureName.length-1]);
+        loadKeyWords();
+    }
+    
+    public void loadKeyWords() throws FileNotFoundException
+    {
+        if (mainPicturePath.isEmpty())
+            return;
+        
+        VBoxKeyword.getChildren().clear();
+        ArrayList<String> keyWords = pictureCollection.keyWordsByPicture(mainPicturePath);
+        
+        if ((keyWords != null) && (!keyWords.isEmpty()))
+        {
+            for (String keyWord : keyWords)
+            {
+                keyWordLoader(keyWord);
+            }
+        }
+        
+    }
+    
+    private void keyWordLoader(String s) throws FileNotFoundException
+    {
+        SplitPane kW = new SplitPane();
+        Label label1 = new Label();
+        label1.setText(s);
+        label1.setPrefWidth(92);
+        label1.setMinWidth(92);
+        Tooltip tooltip = new Tooltip();
+        tooltip.setText(s);
+        label1.setTooltip(tooltip);
+        Button b = new Button();
+        //b.getStylesheets().add("images\\croiXRouge.png");
+        ImageView imV = createImageView("images\\croiXRouge.png");
+        imV.setPreserveRatio(true);
+        imV.setFitHeight(16);
+        b.setGraphic(imV);
+        b.setMinSize(25, 25);
+        b.setPrefSize(25, 25);
+        b.setOnMouseClicked(e->{
+            try {
+                deleteKeyWord(label1.getText());
+            } catch (FileNotFoundException ex) {
+                Logger.getLogger(FXMLDocumentController.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            
+        });
+        kW.getItems().addAll(label1,b);
+        kW.setDividerPositions(0.5);
+        VBoxKeyword.getChildren().add(kW);
+    }
+
+    private void newKeyWord(String s) throws FileNotFoundException {
+        SplitPane kW = new SplitPane();
+        Label label1 = new Label();
+        label1.setText(s);
+        label1.setPrefWidth(92);
+        label1.setMinWidth(92);
+        Tooltip tooltip = new Tooltip();
+        tooltip.setText(s);
+        label1.setTooltip(tooltip);
+        Button b = new Button();
+        //b.getStylesheets().add("images\\croiXRouge.png");
+        ImageView imV = createImageView("images\\croiXRouge.png");
+        imV.setPreserveRatio(true);
+        imV.setFitHeight(16);
+        b.setGraphic(imV);
+        b.setMinSize(25, 25);
+        b.setPrefSize(25, 25);
+        b.setOnMouseClicked(e->{
+            System.out.println("delete");
+            try {
+                deleteKeyWord(label1.getText());
+            } catch (FileNotFoundException ex) {
+                Logger.getLogger(FXMLDocumentController.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        });
+        kW.getItems().addAll(label1,b);
+        kW.setDividerPositions(0.5);
+        VBoxKeyword.getChildren().add(kW);
+        pictureCollection.addElement(mainPicturePath, s);
+    }
+    
+    private void deleteKeyWord(String keyWord) throws FileNotFoundException
+    {
+        pictureCollection.deleteKeyWord(mainPicturePath, keyWord);
+        loadKeyWords();
     }
 }
 
