@@ -37,6 +37,9 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.image.Image;
+import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyCodeCombination;
+import javafx.scene.input.KeyCombination;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.GridPane;
 
@@ -185,6 +188,7 @@ public class FXMLDocumentController implements Initializable {
         
     }
     
+    
     @FXML
     private void handleButtonDirectory(ActionEvent event) throws FileNotFoundException {
         
@@ -236,6 +240,7 @@ public class FXMLDocumentController implements Initializable {
         menuItemClose.setText(bundle.getString("menuItemClose"));
         menuEdit.setText(bundle.getString("menuEdit"));
         menuItemDelete.setText(bundle.getString("menuItemDelete"));
+        menuItemSave.setText(bundle.getString("menuItemSave"));
         menuHelp.setText(bundle.getString("menuHelp"));
         menuItemAbout.setText(bundle.getString("menuItemAbout"));
         menuLanguage.setText(bundle.getString("menuLanguage"));
@@ -247,12 +252,14 @@ public class FXMLDocumentController implements Initializable {
         tooltipRename.setText(bundle.getString("tooltipRename"));
         tooltipPosition.setText(bundle.getString("tooltipPosition"));
         tooltipSearch.setText(bundle.getString("tooltipSearch"));
+        
 
         
         
         
         
     }
+    
     
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -263,7 +270,8 @@ public class FXMLDocumentController implements Initializable {
             Logger.getLogger(FXMLDocumentController.class.getName()).log(Level.SEVERE, null, ex);
         }
         mainPicturePath = "";
-       // menuItemSave.setAccelerator(new KeyCodeCombination(KeyCode.S, KeyCombination.CONTROL_DOWN));
+        tooltipDeleteKeyWord = new Tooltip();
+        
     }
 
 /******************************************************************************/

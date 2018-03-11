@@ -110,7 +110,7 @@ public class PictureCollection {
         if (!this.isEmpty())
         {
             BufferedWriter buffer;
-            FileWriter fw = new FileWriter("picturesData.txt", true);
+            FileWriter fw = new FileWriter("picturesData.txt");
             buffer = new BufferedWriter(fw);
             for (String picture : library.keySet())
             {
@@ -126,7 +126,7 @@ public class PictureCollection {
     }
     
     public void load() throws FileNotFoundException, IOException
-    {
+    {  
         File f = new File("picturesData.txt");
         if (f.exists())
         {
