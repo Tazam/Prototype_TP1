@@ -10,6 +10,7 @@ import java.util.ResourceBundle;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.util.ArrayList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -73,7 +74,7 @@ public class FXMLDocumentController implements Initializable {
     @FXML
     private Menu menuFile;
     @FXML
-    private MenuItem menuItemClose;
+    private MenuItem menuItemClose,menuItemSave;
     @FXML
     private Menu menuEdit;
     @FXML
@@ -179,9 +180,8 @@ public class FXMLDocumentController implements Initializable {
             initializePicture(pictures);
         }else
         {
-            System.out.println("reerue");
+            initializePicture(textDirectory.getText());
         }
-        
         
     }
     
@@ -239,6 +239,11 @@ public class FXMLDocumentController implements Initializable {
     @FXML
     private void handleMenuItemClose(ActionEvent event) {
 
+    }
+    
+    @FXML
+    private void handleMenuItemSave(ActionEvent event) throws IOException {
+        pictureCollection.save();
     }
     
     @FXML
@@ -442,7 +447,13 @@ public class FXMLDocumentController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         pictureCollection = new PictureCollection();
+        try {
+            pictureCollection.load();
+        } catch (IOException ex) {
+            Logger.getLogger(FXMLDocumentController.class.getName()).log(Level.SEVERE, null, ex);
+        }
         mainPicturePath = "";
+        
     }
 
 /******************************************************************************/
@@ -485,7 +496,7 @@ public class FXMLDocumentController implements Initializable {
         for (String picture : pictures)
         {
             gridPane.addRow(i, createImageView(picture));
-            i++;
+            //i++;
         }
     }
     

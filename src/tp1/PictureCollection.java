@@ -5,6 +5,13 @@
  */
 package tp1;
 
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
@@ -55,7 +62,7 @@ public class PictureCollection {
         String ret = "";
          for (String picture : library.keySet())
          {
-             ret+=picture+": "+library.get(picture).toString()+"\\n";
+             ret+=picture+": "+library.get(picture).toString()+"\n";
          }
         
         return ret;
@@ -70,9 +77,11 @@ public class PictureCollection {
             String [] s;
             s = picture.split("\\\\");
             String path="";
-            for (int i=0; i<s.length-1;i++)
-                path+=s[i];
-            
+            for (int i=0; i<s.length-2;i++)
+                path+=s[i]+"\\";
+            path+=s[s.length-2];
+            System.out.println("path ---> "+path);
+            System.out.println(currentPath);
             // si l'image n'appartient pas au rep courrant on passe cette image.
             if (!path.equals(currentPath))
                 break;
@@ -87,5 +96,51 @@ public class PictureCollection {
             }
         }
         return ret;
+    }
+    
+    public boolean isEmpty()
+    {
+        if (library == null)
+        {return true;}
+        return library.isEmpty();
+    }
+    
+    public void save() throws IOException
+    {
+        if (!this.isEmpty())
+        {
+            BufferedWriter buffer;
+            FileWriter fw = new FileWriter("picturesData.txt", true);
+            buffer = new BufferedWriter(fw);
+            for (String picture : library.keySet())
+            {
+                buffer.write(picture+" ");
+                for (String keyWord : library.get(picture))
+                {
+                    buffer.write(keyWord+" ");
+                }
+                buffer.newLine();
+            }
+            buffer.flush();
+        }
+    }
+    
+    public void load() throws FileNotFoundException, IOException
+    {
+        File f = new File("picturesData.txt");
+        if (f.exists())
+        {
+            BufferedReader buffer = new BufferedReader(new FileReader("picturesData.txt"));
+            String line;
+            while ((line = buffer.readLine()) != null)
+            {
+                String[] lineSplit = line.split(" ");
+                for (int i=1;i<lineSplit.length;i++)
+                {
+                    this.addElement(lineSplit[0], lineSplit[i]);
+                }
+            }
+        }
+        
     }
 }
