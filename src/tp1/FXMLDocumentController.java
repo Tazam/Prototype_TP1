@@ -37,9 +37,6 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.image.Image;
-import javafx.scene.input.KeyCode;
-import javafx.scene.input.KeyCodeCombination;
-import javafx.scene.input.KeyCombination;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.GridPane;
 
@@ -189,26 +186,6 @@ public class FXMLDocumentController implements Initializable {
     }
     
     @FXML
-    private void handleButtonPosition(ActionEvent event) {
-
-    }
-    
-    @FXML
-    private void handleButtonResize(ActionEvent event) {
-
-    }
-    
-    @FXML
-    private void handleButtonRename(ActionEvent event) {
-
-    }
-    
-    @FXML
-    private void handleButtonSlideShow(ActionEvent event) {
-
-    }
-    
-    @FXML
     private void handleButtonDirectory(ActionEvent event) throws FileNotFoundException {
         
         File dir = directoryChooser.showDialog(tooltipRename);
@@ -230,48 +207,8 @@ public class FXMLDocumentController implements Initializable {
     }
     
     @FXML
-    private void handleMenuBar(ActionEvent event) {
-
-    }
-    
-    @FXML
-    private void handleMenuFile(ActionEvent event) {
-
-    }
-    
-    @FXML
-    private void handleMenuItemClose(ActionEvent event) {
-
-    }
-    
-    @FXML
     private void handleMenuItemSave(ActionEvent event) throws IOException {
         pictureCollection.save();
-    }
-    
-    @FXML
-    private void handleMenuEdit(ActionEvent event) {
-
-    }
-    
-    @FXML
-    private void handleMenuItemDelete(ActionEvent event) {
-
-    }
-    
-    @FXML
-    private void handleMenuHelp(ActionEvent event) {
-
-    }
-    
-    @FXML
-    private void handleMenuItemAbout(ActionEvent event) {
-
-    }
-    
-    @FXML
-    private void handleMenuLanguage(ActionEvent event) {
-
     }
     
     @FXML
@@ -317,136 +254,6 @@ public class FXMLDocumentController implements Initializable {
         
     }
     
-    @FXML
-    private void handleToolBar(ActionEvent event) {
-
-    }
-    
-    @FXML
-    private void handleTooltipLaunchSlideShow(ActionEvent event) {
-
-    }
-    
-    @FXML
-    private void handleTooltipChooseDirectory(ActionEvent event) {
-
-    }
-    
-    @FXML
-    private void handleTooltipPosition(ActionEvent event) {
-
-    }
-    
-    @FXML
-    private void handleTooltipAddKeyword(ActionEvent event) {
-
-    }
-    
-    @FXML
-    private void handleTootipResize(ActionEvent event) {
-
-    }
-    
-    @FXML
-    private void handleScrollBar(ActionEvent event) {
-
-    }
-    
-    @FXML
-    private void handleSplitPane(ActionEvent event) {
-
-    }
-    
-    @FXML
-    private void handleImageViewSearch(ActionEvent event) {
-
-    }
-    
-    @FXML
-    private void handleTooltipSearch(ActionEvent event) {
-
-    }
-    
-    @FXML
-    private void handleImageViewPosition(ActionEvent event) {
-
-    }
-    @FXML
-    private void handleImageViewResize(ActionEvent event) {
-
-    }
-    
-    @FXML
-    private void handletextFieldImage(ActionEvent event) {
-
-    }
-    
-    @FXML
-    private void handleTooltipRename(ActionEvent event) {
-
-    }
-    
-    @FXML
-    private void handleAnchorPaneMain(ActionEvent event) {
-
-    }
-    
-    @FXML
-    private void handleAnchorPaneCenter(ActionEvent event) {
-
-    }
-    
-    @FXML
-    private void handleAnchorPaneViewer(ActionEvent event) {
-
-    }
-    
-    @FXML
-    private void handleScrollBarKeywords(ActionEvent event) {
-
-    }
-    
-    @FXML
-    private void handleVBoxKeyword(ActionEvent event) {
-
-    }
-    
-    @FXML
-    private void handleSplitPaneKeyword(ActionEvent event) {
-
-    }
-    
-    @FXML
-    private void handleAnchorPaneKeyword(ActionEvent event) {
-
-    }
-    
-    @FXML
-    private void handleTextFieldKeyword(ActionEvent event) {
-
-    }
-    
-    @FXML
-    private void handleAnchorPaneFieldKeyWord(ActionEvent event) {
-
-    }
-    
-    @FXML
-    private void handleButtonDeleteKeyword(ActionEvent event) {
-
-    }
-    
-    @FXML
-    private void handleTooltipDeleteKeyWord(ActionEvent event) {
-
-    }
-    
-    @FXML
-    private void handleImageViewerDeleteKeyword(ActionEvent event) {
-
-    }
-    
-    
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         pictureCollection = new PictureCollection();
@@ -456,8 +263,7 @@ public class FXMLDocumentController implements Initializable {
             Logger.getLogger(FXMLDocumentController.class.getName()).log(Level.SEVERE, null, ex);
         }
         mainPicturePath = "";
-        //menuItemSave.setAccelerator(new KeyCodeCombination(KeyCode.S, KeyCombination.CONTROL_DOWN));
-        
+       // menuItemSave.setAccelerator(new KeyCodeCombination(KeyCode.S, KeyCombination.CONTROL_DOWN));
     }
 
 /******************************************************************************/
