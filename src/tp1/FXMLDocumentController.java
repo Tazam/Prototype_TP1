@@ -37,6 +37,9 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.image.Image;
+import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyCodeCombination;
+import javafx.scene.input.KeyCombination;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.GridPane;
 
@@ -453,6 +456,7 @@ public class FXMLDocumentController implements Initializable {
             Logger.getLogger(FXMLDocumentController.class.getName()).log(Level.SEVERE, null, ex);
         }
         mainPicturePath = "";
+        //menuItemSave.setAccelerator(new KeyCodeCombination(KeyCode.S, KeyCombination.CONTROL_DOWN));
         
     }
 
@@ -557,8 +561,8 @@ public class FXMLDocumentController implements Initializable {
         SplitPane kW = new SplitPane();
         Label label1 = new Label();
         label1.setText(s);
-        label1.setPrefWidth(92);
-        label1.setMinWidth(92);
+        label1.setPrefWidth(105);
+        label1.setMinWidth(105);
         Tooltip tooltip = new Tooltip();
         tooltip.setText(s);
         label1.setTooltip(tooltip);
@@ -587,8 +591,8 @@ public class FXMLDocumentController implements Initializable {
         SplitPane kW = new SplitPane();
         Label label1 = new Label();
         label1.setText(s);
-        label1.setPrefWidth(92);
-        label1.setMinWidth(92);
+        label1.setPrefWidth(105);
+        label1.setMinWidth(105);
         Tooltip tooltip = new Tooltip();
         tooltip.setText(s);
         label1.setTooltip(tooltip);
@@ -619,5 +623,6 @@ public class FXMLDocumentController implements Initializable {
         pictureCollection.deleteKeyWord(mainPicturePath, keyWord);
         loadKeyWords();
     }
+    
 }
 
